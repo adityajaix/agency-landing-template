@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Landing Page Template</title>
+    <style>
+        /* Customize: change --primary-color to match your brand */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #0f172a;
+            --primary-font-color: #0f172a;
+            --secondary-font-color: #64748b;
+            --featured-color: #2563eb;
+            --featured-glow: rgba(37, 99, 235, 0.2);
+            --featured-badge-bg: #2563eb;
+            --featured-badge-text: #ffffff;
+            --border-color: rgba(0, 0, 0, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+
+        }
+
+        header.scrolled {
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 20px var(--shadow-color);
+        }
+
+        header .logo a {
+            font-size: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo a img {
+            height: 60px;
+        }
+
+        .nav-bar a {
+            color: var(--primary-font-color);
+            padding: 20px 40px 20px 0px;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .nav-bar a:hover {
+            color: var(--primary-color);
+        }
+
+        .action-btn {
+            width: 150px;
+            height: 50px;
+            border-radius: 25px;
+            border: none;
+            font-size: 17px;
+            color: white;
+            background-color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .action-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
+        }
+
+        .hero-img {
+            flex: 1;
+            min-width: min(300px, 100%);
+        }
+
+        .hero-img img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .happy-customer-number {
+            font-family: 'Arial Narrow Bold', sans-serif;
+            font-size: 25px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .happy-customer {
+            font-size: 20px;
+            padding-top: 0px;
+            margin-top: 0px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 28px;
+            background: none;
+            border: none;
+        }
+
+        .hero-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .hero-section h1 {
+            font-family: "Playfair Display", serif;
+            font-size: 35px;
+        }
+
+        .short-about {
+            font-family: 'Arial Narrow', Arial, sans-serif;
+            font-size: 18px;
+            color: var(--secondary-font-color);
+            line-height: 30px;
+        }
+
+        .hero-description {
+            padding: 10px 30px;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .pricing-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .price-card {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--secondary-color);
+            border-radius: 20px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .price-card h2 {
+            font-size: 2.5rem;
+            margin: 8px 0;
+        }
+
+        .price-card button {
+            width: 100%;
+            padding: 12px 0;
+            border: 1px solid var(--secondary-color);
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        .price-card button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .price-card button:active {
+            transform: scale(0.97);
+        }
+
+        .featured {
+            border-color: var(--featured-color);
+            box-shadow: 0 8px 30px var(--featured-glow);
+
+        }
+
+        .badge {
+            background: var(--featured-badge-bg);
+            color: var(--featured-badge-text);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .price-card .featured-btn {
+            background-color: var(--featured-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-bar {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+            }
+
+            .nav-bar.open {
+                display: flex;
+            }
+        }
+
+        footer {
+            display: flex;
+            align-items: center;
+            padding: 0px 20px;
+            justify-content: space-between;
+            background-color: var(--secondary-color);
+            height: 30vh;
+            color: white;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .links a {
+            font-size: 1rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        footer .logo a {
+            font-size: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .logo a img {
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><a href="#">YourAgency</a></div>
+        <nav class="nav-bar" id="nav-bar">
+            <a href="#">Work</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button class="action-btn">Hire Us</button>
+        </nav>
+        <button class="hamburger" id="hamburger">☰</button>
+    </header>
+    <div class="hero-section">
+        <div class="hero-description">
+            <h1>We Build Digital Products That Perform</h1>
+            <p class="short-about">Clean, fast, and purposeful web experiences for startups and growing businesses.</p>
+            <button class="action-btn">See Our Work</button>
+            <p class="happy-customer-number">50+</p>
+            <p class="happy-customer">Projects Delivered</p>
+        </div>
+        <div class="hero-img">
+            <img src="https://images.unsplash.com/photo-1773332585698-cba3c91b73e4?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=microsoft-copilot-oTDuuLUhH20-unsplash.jpg" alt="hero image">
+        </div>
+    </div>
+
+    <div class="pricing-section">
+        <div class="price-card">
+            <!-- Card 1 -->
+            <h3>Starter</h3>
+            <p>For small projects</p>
+            <h2>$499</h2>
+            <p>One-time payment</p>
+            <ul>
+                <li>1 page website</li>
+                <li>Mobile responsive</li>
+                <li>Contact form</li>
+                <li>2 rounds of revisions</li>
+                <li>7 day delivery</li>
+            </ul>
+            <button>Get Started</button>
+        </div>
+
+
+        <div class="price-card">
+            <!-- Card 2 -->
+            <h3>Growth</h3>
+            <p>For growing businesses</p>
+            <h2>$999</h2>
+            <p>One-time payment</p>
+            <ul>
+                <li>Up to 5 pages</li>
+                <li>Mobile responsive</li>
+                <li>Contact form</li>
+                <li>SEO basics</li>
+                <li>5 rounds of revisions</li>
+                <li>14 day delivery</li>
+            </ul>
+            <button>Get Started</button>
+        </div>
+
+        <div class="price-card featured">
+            <!-- Card 3 -->
+            <span class="badge">Most popular</span>
+            <h3>Pro</h3>
+            <p>Full service</p>
+            <h2>$1,999</h2>
+            <p>One-time payment</p>
+            <ul>
+                <li>Unlimited pages</li>
+                <li>Mobile responsive</li>
+                <li>CMS integration</li>
+                <li>SEO optimized</li>
+                <li>Analytics setup</li>
+                <li>Unlimited revisions</li>
+                <li>30 day support</li>
+            </ul>
+            <button class="featured-btn">Get Started</button>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="logo"><a href="#">YourAgency</a></div>
+        <div class="links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="copyright">© 2026 YourAgency</div>
+    </footer>
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('nav-bar').classList.toggle('open');
+        });
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').classList.toggle('scrolled', window.scrollY > 10);
+        })
+    </script>
+</body>
+</html>
